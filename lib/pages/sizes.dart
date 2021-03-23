@@ -39,24 +39,15 @@ class _sizesState extends State<sizes> {
                 scrollDirection: Axis.vertical,
                 itemCount: Sizes().Size.length,
                   itemBuilder: (context, i) {
-                  final items = Sizes().Size[0];
+                  final items = Sizes().Size[i];
                   return
                       Column(
                         children: [
-                          SizedBox(height: 70,),
-                          CircleAvatar(
-                            backgroundColor: selected ? Colors.red : Colors.transparent,
-                            radius: 30,
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  selected = !selected;
-                                });
-                              },
-                              icon: Image.asset(items.image),
-                              iconSize: 150,
+                          SizedBox(height: 100,),
+                          FlatButton(
+                              onPressed: () {},
+                              child: Image.asset(items.image),
                             ),
-                          ),
                           Text(items.size, style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
