@@ -8,7 +8,7 @@ class sizes extends StatefulWidget {
 
 class _sizesState extends State<sizes> {
   List<sizes> Size;
-  int SelectedIndex;
+  bool selected = false;
 
 
   @override
@@ -39,16 +39,25 @@ class _sizesState extends State<sizes> {
                 scrollDirection: Axis.vertical,
                 itemCount: Sizes().Size.length,
                   itemBuilder: (context, i) {
-                  final items = Sizes().Size[i];
+                  final items = Sizes().Size[0];
                   return
                       Column(
                         children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(items.image),
-                            iconSize: 150,
+                          SizedBox(height: 70,),
+                          CircleAvatar(
+                            backgroundColor: selected ? Colors.red : Colors.transparent,
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  selected = !selected;
+                                });
+                              },
+                              icon: Image.asset(items.image),
+                              iconSize: 150,
+                            ),
                           ),
-                      Text(items.size, style: TextStyle(
+                          Text(items.size, style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
                           color: Colors.black),),
