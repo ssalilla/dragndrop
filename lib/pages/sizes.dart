@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minors1/models/sizes.dart';
+import 'package:minors1/pages/mainpizzaM.dart';
 
 class sizes extends StatefulWidget {
   @override
@@ -45,7 +46,10 @@ class _sizesState extends State<sizes> {
                         children: [
                           SizedBox(height: 100,),
                           FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => mainpizzaM()
+                                ));
+                              },
                               child: Image.asset(items.image),
                             ),
                           Text(items.size, style: TextStyle(
