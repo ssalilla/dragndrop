@@ -28,32 +28,38 @@ class _sizesState extends State<sizes> {
             fit: BoxFit.fill,
           )
         ),
-        child: GridView.builder(
-          itemCount: Sizes().Size.length,
-            itemBuilder: (context, i) {
-            final items = Sizes().Size[i];
-            return ListTile(
-              tileColor: SelectedIndex == i ? Colors.red : null,
-              onTap: () {
-                setState(() {
-                  SelectedIndex = i;
-                });
-                IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(items.image),
-                  iconSize: 40,
-                );
-                Text(items.size, style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.black),);
-              },
-            );
-            },
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 2),
+        child: Row(
+          children: [
+            SizedBox(width: 1050),
+            Container(
+              height: 450,
+              width: 200,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: Sizes().Size.length,
+                  itemBuilder: (context, i) {
+                  final items = Sizes().Size[i];
+                  return
+                      Column(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Image.asset(items.image),
+                            iconSize: 150,
+                          ),
+                      Text(items.size, style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Colors.black),),
+                        ],
+                    ); },
+                  ),
             ),
-      ),
-    );
+          ],
+        ),
+
+            ),
+      );
   }
 }
