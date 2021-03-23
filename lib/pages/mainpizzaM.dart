@@ -18,43 +18,50 @@ class _mainpizzaMState extends State<mainpizzaM> {
       ),
       extendBodyBehindAppBar: true,
       body: Container(
-
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/GWP.jpg'),
           fit: BoxFit.fill,
         )),
-        child: Row(
+        child: Column(
           children: [
             Container(
-              width: 800,
-              height: 600,
+              width: 400,
+              height: 400,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/pizza/woddenboard2.jpg'),
                 )
               ),
             ),
-           Container(
-                  child: GridView.builder(
-                    scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: Topping().Toppings.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 8, childAspectRatio: 2),
-                          itemBuilder: (context, i) {
-                      final grandtoppings = Topping().Toppings[i];
-                      return Column(
-                        children: [
-                          FlatButton(onPressed: () {},
+            Container(
+              height: 270,
+              width: 800,
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: Topping().Toppings.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 6, childAspectRatio: 0.5),
+                itemBuilder: (context, i) {
+                  final grandtoppings = Topping().Toppings[i];
+                  return Column(
+                    children: [
+                      FlatButton(onPressed: () {},
                           child: Image.asset(grandtoppings.image)
-                          ),
-                          Text(grandtoppings.topping),
-                        ],
-                      );
-                          },
                       ),
-                     ),
+                      Text(grandtoppings.topping, style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black),),
+                    ],
+                  );
+                },
+              ),
+            ),
                 ],
             ),
       ),
