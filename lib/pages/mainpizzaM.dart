@@ -50,8 +50,19 @@ class _mainpizzaMState extends State<mainpizzaM> {
                   final grandtoppings = Topping().Toppings[i];
                   return Column(
                     children: [
-                      FlatButton(onPressed: () {},
-                          child: Image.asset(grandtoppings.image)
+                      Draggable(
+                        child: FlatButton(onPressed: () {},
+                            child: Image.asset(grandtoppings.image)
+                        ),
+                        feedback: Container(
+                          width: 300,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(grandtoppings.image),
+                            ),
+                          ),
+                        ),
                       ),
                       Text(grandtoppings.topping, style: TextStyle(
                           fontWeight: FontWeight.bold,
