@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minors1/models/sizes.dart';
+import 'package:minors1/pages/mainpizzaL.dart';
 import 'package:minors1/pages/mainpizzaM.dart';
 
 class sizes extends StatefulWidget {
@@ -9,7 +10,6 @@ class sizes extends StatefulWidget {
 
 class _sizesState extends State<sizes> {
   List<sizes> Size;
-  bool selected = false;
 
 
   @override
@@ -46,16 +46,20 @@ class _sizesState extends State<sizes> {
                         children: [
                           SizedBox(height: 100,),
                           FlatButton(
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => mainpizzaM()
-                                ));
-                              },
-                              child: Image.asset(items.image),
-                            ),
+                          child: Image.asset(items.image),
+                          onPressed: () {
+                            if (items.id == 1)
+                            {Navigator.push(context, MaterialPageRoute(builder: (context) => mainpizzaM()
+                            ));}
+                            else if (items.id == 2 )
+                            {Navigator.push(context, MaterialPageRoute(builder: (context) => mainpizzaL()
+                            ));}
                           Text(items.size, style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          color: Colors.black),),
+                          color: Colors.black),);
+                          }
+                          ),
                         ],
                     ); },
                   ),
